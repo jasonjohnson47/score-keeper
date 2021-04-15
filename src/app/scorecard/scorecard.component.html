@@ -1,0 +1,13 @@
+<div class="scorecard">
+    <fieldset *ngFor="let player of players">
+        <legend class="sr-only">{{player.name}}'s Score</legend>
+        <div class="player-name">
+            <label class="sr-only" for="{{player.id}}-name">Player Name</label>
+            <input id="{{player.id}}-name" type="text" [(ngModel)]="player.name">
+        </div>
+        <div class="player score">
+            <label class="sr-only" for="{{player.score}}-score">Player Score</label>
+            <input id="{{player.score}}-score" type="text" [(ngModel)]="player.score">
+        </div>
+    </fieldset>
+</div>
