@@ -1,8 +1,14 @@
 import { Player } from './Player';
 
-export const PLAYERS: Player[] = [
-    { id: 0, name: 'Jason', score: 15 },
-    { id: 1, name: 'Baby Cake', score: 95 },
-    { id: 2, name: 'Indie Baby', score: 35 },
-    { id: 3, name: 'Buddy Boy', score: 145 }
+const defaultPlayers: Player[] = [
+    { id: 0, name: 'Player 1', score: 0 },
+    { id: 1, name: 'Player 2', score: 0 }
 ];
+
+const playersJson = localStorage.getItem('scoreKeeperPlayers');
+
+export const PLAYERS = playersJson !== null
+    ? JSON.parse(playersJson)
+    : defaultPlayers;
+
+localStorage.setItem('scoreKeeperPlayers', JSON.stringify(PLAYERS));

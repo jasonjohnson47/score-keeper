@@ -14,7 +14,12 @@ export class ScorecardComponent implements OnInit {
   players: Player[] = [];
 
   getPlayers(): void {
-    this.playerService.getPlayers().subscribe((players) => this.players = players);
+    this.players = this.playerService.getPlayers();
+    //this.playerService.getPlayers().subscribe((players) => this.players = players);
+  }
+
+  saveScore(value: string) {
+    this.playerService.updatePlayerScore(value);
   }
 
   ngOnInit(): void {
