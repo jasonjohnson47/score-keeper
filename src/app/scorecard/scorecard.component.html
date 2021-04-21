@@ -1,6 +1,6 @@
 <div class="scorecard">
     <div *ngFor="let player of players">
         <label for="{{player.id}}-score-2">{{player.name}}</label>
-        <input id="{{player.id}}-score-2" type="text" [(ngModel)]="player.score" [attr.aria-description]="player.name + '\'s score'" #playerScore (keyup)="saveScore(playerScore.value)">
+        <input id="{{player.id}}-score-2" type="text" [(ngModel)]="player.score" [attr.aria-description]="player.name + '\'s score'" #playerScore (keyup)="saveScore(player.id, playerScore.value)">
     </div>
 </div>

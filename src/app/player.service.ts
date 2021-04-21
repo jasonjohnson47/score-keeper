@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Player } from './Player';
-import { PLAYERS } from './mock-players';
+import { defaultPlayers } from './default-players';
 //import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -10,8 +10,14 @@ export class PlayerService {
 
   constructor() { }
 
+  playersJson = localStorage.getItem('scoreKeeperPlayers');
+
+  players = this.playersJson !== null
+    ? JSON.parse(this.playersJson)
+    : defaultPlayers;
+
   getPlayers(): Player[] {
-    return PLAYERS;
+    return this.players;
   }
 
   /*getPlayers(): Observable<Player[]> {
@@ -19,8 +25,13 @@ export class PlayerService {
     return players;
   }*/
 
-  updatePlayerScore(score: string): void {
-    console.log(score);
+  savePlayers(): void {
+    localStorage.setItem('scoreKeeperPlayers', JSON.stringify(this.players));
+  }
+
+  updatePlayerScore(id: number, score: string): void {
+    this.players[id].score = score;
+    this.savePlayers();
   }
 
 }
