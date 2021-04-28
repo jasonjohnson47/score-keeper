@@ -34,4 +34,15 @@ export class PlayerService {
     this.savePlayers();
   }
 
+  updatePlayerName(id: number, name: string): void {
+    this.players[id].name = name;
+    this.savePlayers();
+  }
+
+  addNewPlayer() {
+    const newPlayerId: number = this.players.length;
+    this.players[newPlayerId] = { id: newPlayerId, name: 'Player ' + (newPlayerId + 1), score: 0 }
+    this.savePlayers();
+  }
+
 }

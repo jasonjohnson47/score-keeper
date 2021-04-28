@@ -1,0 +1,8 @@
+<div class="player-list">
+    <h2>Player Names</h2>
+    <div *ngFor="let player of players">
+        <label for="player-{{player.id}}">Player {{player.id + 1}}</label>
+        <input id="player-{{player.id}}" type="text" [(ngModel)]="player.name" #playerName (keyup)="saveName(player.id, playerName.value)">
+    </div>
+</div>
+<button (click)="addNewPlayer()">Add Player</button>
